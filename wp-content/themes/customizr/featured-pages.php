@@ -14,8 +14,9 @@ global $tc_theme_options;
 $areas = array ('one','two','three');
 ?>
 <div align="center">
-	<form method="POST">
+	<form method="POST" action="check_email.php">
 	<input type="email" id='txt_email' name='txt_email' style='border-radius: 10px 10px 10px 10px;width:425px;height:30px;background-color:beige' required="required">
+
 	<button style='height:33px'>Verify</button>
 	</form>
 </div>
