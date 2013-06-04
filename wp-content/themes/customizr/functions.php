@@ -335,7 +335,7 @@ add_action('wp_enqueue_scripts', 'tc_scripts');
   function tc_scripts() {
       //SCRIPTS the true boolean parameter means it's loaded in the footer
       wp_enqueue_script('jquery');
-
+      wp_enqueue_script('jquery-min');
       wp_enqueue_script( 'jquery-ui-core' );
 
       wp_enqueue_script('bootstrap',TC_BASE_URL . 'inc/js/bootstrap.min.js',array('jquery'),null,true);

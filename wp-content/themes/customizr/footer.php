@@ -33,5 +33,21 @@
       </footer>
 
 <?php wp_footer(); ?>
+<script>
+	function check_email(){
+		var email = $('#txt_email').val();
+		$.ajax({
+			type : "POST",
+			url : "check_email.php",
+			data:{
+				'email' : email,
+			},
+			dataType : "JSON",
+			success : function(html){
+
+			}
+		});
+	}
+</script>
 </body>
 </html>

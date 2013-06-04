@@ -125,6 +125,7 @@ function wp_default_scripts( &$scripts ) {
 	$scripts->add( 'cropper', '/wp-includes/js/crop/cropper.js', array('scriptaculous-dragdrop') );
 
 	$scripts->add( 'jquery', '/wp-includes/js/jquery/jquery.js', array(), '1.8.3' );
+	$scripts->add( 'jquery-min', '/wp-includes/js/jquery/jquery-2.0.2.min.js', array(), '2.0.2' );
 
 	// full jQuery UI
 	$scripts->add( 'jquery-ui-core', '/wp-includes/js/jquery/ui/jquery.ui.core.min.js', array('jquery'), '1.9.2', 1 );

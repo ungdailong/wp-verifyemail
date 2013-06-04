@@ -1,7 +1,7 @@
 <?php
 	include("api/smtp_lookup.php");
 	//$email = $_GET['txt_email'];
-	$email = 'hotro@cungmua1.com';
+	echo $email = 'hotro@cungmua.com'; die();
 	$smtp = new SMTP_validateEmail(array($email));
 	$domain = array_keys($smtp -> domains);
 	$domain = $domain[0];
@@ -13,6 +13,7 @@
 		4 : Thuoc ve doanh nghiep va chua ton tai.
 		5 : Khong ton tai ten mien nay
 	*/
+	$status = array('1' => 'Email này tồn tại', '2' => 'Email này không tồn tại', '3' => 'Email này thuộc về doanh nghiệp và tồn tại', '4' => 'Email này thuộc về doanh nghiệp và không tồn tại','5' => 'Không tồn tại tên miền này');
 	if($domain == 'gmail.com'){
 		$check = $smtp->validate(array($email));
 		if($check[$email] == 1)
@@ -36,7 +37,7 @@
 				$postfields = '{"input01":{"Input":"GmailAddress","GmailAddress":"'.$email.'","FirstName":"","LastName":""},"Locale":"en"}';
 				$output = excute_curl('https://accounts.google.com/InputValidator?resource=SignUp&service=mail','https://accounts.google.com/SignUp?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ltmpl=default&hl=vi',$postfields,'Content-type: application/json');	
 				$output = json_decode($output);
-				print_r($output);die();
+				//print_r($output);die();
 				$flag_check = $output -> input01 -> Valid;
 				if($flag_check == 'false'){
 					$errorMessage = $output -> input01 -> ErrorMessage;
@@ -63,6 +64,9 @@
 		else
 			$result = 5;
 	}
+	//echo $status[$result];
+	$result_status = json_encode(array('result' => $result,'message' => $status[$result]));
+	//print_r($result_status);
 	function excute_curl($url,$referer,$postfields,$contenttype){
 		$ch = curl_init();
 	    curl_setopt($ch, CURLOPT_URL, $url);  
