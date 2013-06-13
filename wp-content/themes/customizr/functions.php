@@ -314,7 +314,8 @@ add_action('wp_enqueue_scripts', 'tc_customizer_styles');
       );
     //enqueue skin
     wp_enqueue_style( 'customizr-skin');
-
+    //showLoading
+    wp_enqueue_style( 'showLoading');
     //enqueue WP style sheet
     wp_enqueue_style( 'customizr-style', get_stylesheet_uri(), array( 'customizr-skin' ), CUSTOMIZR_VER,$media = 'all'  );
 }
@@ -337,7 +338,7 @@ add_action('wp_enqueue_scripts', 'tc_scripts');
       wp_enqueue_script('jquery');
       wp_enqueue_script('jquery-min');
       wp_enqueue_script( 'jquery-ui-core' );
-
+      wp_enqueue_script( 'jquery-showLoading',array('jquery'),null,true );
       wp_enqueue_script('bootstrap',TC_BASE_URL . 'inc/js/bootstrap.min.js',array('jquery'),null,true);
      
       //tc scripts

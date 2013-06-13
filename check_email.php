@@ -1,7 +1,8 @@
 <?php
-	include("api/smtp_lookup.php");
-	//$email = $_GET['txt_email'];
-	echo $email = 'hotro@cungmua.com'; die();
+	require_once('wp-config.php');
+	global  $wpdb;
+	require_once("api/smtp_lookup.php");
+	$email = $_GET['txt_email'];
 	$smtp = new SMTP_validateEmail(array($email));
 	$domain = array_keys($smtp -> domains);
 	$domain = $domain[0];
@@ -64,9 +65,9 @@
 		else
 			$result = 5;
 	}
-	//echo $status[$result];
-	$result_status = json_encode(array('result' => $result,'message' => $status[$result]));
-	//print_r($result_status);
+	$data = array('email' => $email,'domain' => $domain,'status_id' => $result,'create_time' => time());
+	$wpdb->insert('verify_email', $data);
+	echo $result_status = json_encode(array('result' => $result,'message' => $status[$result]));
 	function excute_curl($url,$referer,$postfields,$contenttype){
 		$ch = curl_init();
 	    curl_setopt($ch, CURLOPT_URL, $url);  
