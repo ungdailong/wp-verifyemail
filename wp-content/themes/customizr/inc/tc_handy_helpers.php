@@ -353,6 +353,7 @@ if(!function_exists('tc_get_featured_pages')) :
           
           //limit text to 200 car
           $text                 = strip_tags($featured_text);
+          //$text                 = $featured_text;
           if (empty($text))
             $text               = strip_tags($page->post_content);
           if (strlen($text) > 200) {
@@ -416,7 +417,7 @@ if(!function_exists('tc_get_featured_pages')) :
                   <a class="round-div" href="<?php echo $featured_page_link ?>" title="<?php echo $featured_page_title ?>"></a>
               <?php echo $tc_thumb; ?>
             </div>
-              <h2><?php echo $featured_page_title ?></h2>
+              <h2 style='display:none'><?php echo $featured_page_title ?></h2>
             <p><?php echo $text;  ?></p>
               <p><a class="btn btn-primary" href="<?php echo $featured_page_link ?>" title="<?php echo $featured_page_title ?>"><?php _e( 'Read more &raquo;', 'customizr' ) ?></a></p>
         </div><!-- /.span4 -->
