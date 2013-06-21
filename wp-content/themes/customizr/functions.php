@@ -54,13 +54,13 @@ if(!function_exists('tc_get_theme_options')) :
       
       //Customizer options
       $saved = (array) get_option( 'tc_theme_options' );
-  
+      
       $defaults = tc_get_default_options();
 
       $defaults = apply_filters( 'tc_default_theme_options', $defaults );
-
+     
       $tc_theme_options = wp_parse_args( $saved, $defaults );
-
+      
       $tc_theme_options = array_intersect_key( $tc_theme_options, $defaults );
       
       return $tc_theme_options;
@@ -96,9 +96,9 @@ if(!function_exists('tc_get_default_options')) :
           'tc_featured_page_one'             => null,
           'tc_featured_page_two'             => null,
           'tc_featured_page_three'           => null,
-          'tc_featured_text_one'             => null,
-          'tc_featured_text_two'             => null,
-          'tc_featured_text_three'           => null,
+          'featured_text_one'             => null,
+          'featured_text_two'             => null,
+          'featured_text_three'           => null,
           //layout options
           'tc_sidebar_global_layout'      => 'r',
           'tc_sidebar_force_layout'       =>  0,

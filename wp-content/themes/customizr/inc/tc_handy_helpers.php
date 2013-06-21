@@ -343,27 +343,27 @@ if(!function_exists('tc_get_featured_pages')) :
       default://for areas one, two, three
           //get saved options
           global $tc_theme_options;
+          //print_r($tc_theme_options);
           $featured_page_id     = $tc_theme_options['tc_featured_page_'.$area];
           $featured_page_link   = get_permalink( $featured_page_id );
           $featured_page_title  = get_the_title( $featured_page_id );
-          $featured_text        = esc_attr( $tc_theme_options['tc_featured_text_'.$area] );
-
+          //$featured_text        = esc_attr( $tc_theme_options['featured_text_'.$area] );
+          $featured_text        = $tc_theme_options['featured_text_'.$area];
           //get the page/post object
           $page                 =  get_post($featured_page_id);
           
           //limit text to 200 car
-          $text                 = strip_tags($featured_text);
-          //$text                 = $featured_text;
+          //$text                 = strip_tags($featured_text);
+          $text                 = html_entity_decode($featured_text);
           if (empty($text))
             $text               = strip_tags($page->post_content);
           if (strlen($text) > 200) {
-            $text               = substr($text,0,strpos($text,' ',200));
-            $text               = esc_html($text) . ' ...';
+            //$text               = substr($text,0,strpos($text,' ',200));
+            //$text               = esc_html($text) . ' ...';
           }
           else {
-            $text               = esc_textarea( $text );
+            //$text               = esc_textarea( $text );
           }
-          
           
           //set the image : uses thumbnail if any then >> the first attached image then >> a holder script
         $tc_thumb_size = 'tc-thumb';
